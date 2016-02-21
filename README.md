@@ -34,9 +34,21 @@ grunt.initConfig({
 });
 ```
 
+The main idea of this task:
+
+1) We should  have some other grunt task and/or tool that produce the "tentative build files" (or "temporary build files"). 
+
+For instace, browserify or webpack could be called to produce the bundle file(s) of the application, or we could have the `concat -> uglify ->  compress` tasks already defined.
+
+The paths to these temporary build files should be given in the `src` property (see the example below).
+
+2) We give the directory where the temporary build files will be copied over (with a timestap prepended) in the `dest` property. This directory should be the one to be publicly exposed in the server.
+
+3) The temporary build files given in `src` are compared with their counterparts from `dest` (using the md5 hash). If they don't match the task assumes that the file `src` is more recent, so it is copied to `dest` with the current timestamp prepended. The old file is deleted.
+
 ### Options
 
-These task doesn't have any options. Everything is configured in the `files` property of the targets. The `files` property must use the "files array format" (not the "compact format" nor the "files object format") - see http://gruntjs.com/configuring-tasks#files-array-format
+These task doesn't have any options. Everything is configured in the `files` property of the targets. See example below:
 
 ### Usage Examples
 
@@ -63,3 +75,4 @@ grunt.initConfig({
 
 ```
 
+Note that the `files` property must use the "files array format" (not the "compact format" nor the "files object format"). For more details see: http://gruntjs.com/configuring-tasks#files-array-format
