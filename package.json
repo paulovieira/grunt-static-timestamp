@@ -1,7 +1,7 @@
 {
   "name": "grunt-static-timestamp",
-  "description": "Add a timestamp to the static files, but only if files have actually changed",
-  "version": "0.1.0",
+  "description": "Add a timestamp to the static files, but only if they have actually changed",
+  "version": "0.1.1",
   "homepage": "https://github.com/pvieira/grunt-static-timestamp",
   "author": {
     "name": "Paulo Vieira",
@@ -21,7 +21,7 @@
     }
   ],
   "engines": {
-    "node": "0.10.40"
+    "node": "4.x.x"
   },
   "scripts": {
     "test": "grunt test"
