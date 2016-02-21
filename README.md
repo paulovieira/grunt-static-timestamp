@@ -1,6 +1,6 @@
 # grunt-static-timestamp
 
-> Add a timestamp to the static files, but only if files have actually changed
+> Add a timestamp to the static files, but only if they have actually changed
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -17,69 +17,49 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-static-timestamp');
 ```
 
-## The "static_timestamp" task
+Alternatively, you can automate the task loading with the [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks) task.
+
+## The "static-timestamp" task
 
 ### Overview
-In your project's Gruntfile, add a section named `static_timestamp` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `static-timestamp` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  static_timestamp: {
-    options: {
-      // Task-specific options go here.
+    'static-timestamp': {
+        your_target: {
+        // Target-specific file lists and/or options go here.
+        },
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
 });
 ```
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+These task doesn't have any options. Everything is configured in the `files` property of the targets. The `files` property must use the "files array format" (not the "compact format" nor the "files object format") - see http://gruntjs.com/configuring-tasks#files-array-format
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
 ```js
 grunt.initConfig({
-  static_timestamp: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    'static-timestamp': {
+        myApp: {
+            files: [{
+                src: ['/path/to/build_files'], // can use globbing patterns
+                dest: '/path/to/public_dir',
+                filter: 'isFile'
+            }]
+        },
+
+        myApp2: {
+            files: [{
+                src: ['/path/to/other/build_files'], 
+                dest: '/path/to/public_dir', // doesn't have to be same
+                filter: 'isFile'
+            }]
+        }
     },
-  },
 });
+
 ```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  static_timestamp: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
 

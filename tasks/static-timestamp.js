@@ -107,9 +107,9 @@ module.exports = function(grunt) {
         });
 
         if (updated.length === 0) {
-            grunt.log.writeln("no changes detected (everything up to date)");
+            grunt.log.writeln("No changes detected (everything up to date)");
         } else {
-            grunt.log.writeln("updated timestamps:");
+            grunt.log.writeln("Updated timestamps:");
             grunt.log.writeln(grunt.log.wordlist(updated, { separator: "\n" }));
         }
 
@@ -132,3 +132,6 @@ module.exports = function(grunt) {
     });
 
 };
+
+
+
