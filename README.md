@@ -19,14 +19,14 @@ grunt.loadNpmTasks('grunt-static-timestamp');
 
 Alternatively, you can automate the task loading with the [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks) task.
 
-## The "static-timestamp" task
+## The "static_timestamp" task
 
 ### Overview
-In your project's Gruntfile, add a section named `static-timestamp` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `static_timestamp` to the data object passed into `grunt.initConfig()`.(note the underscore instead of the dash):
 
 ```js
 grunt.initConfig({
-    'static-timestamp': {
+    'static_timestamp': {
         your_target: {
         // Target-specific file lists and/or options go here.
         },
@@ -34,7 +34,7 @@ grunt.initConfig({
 });
 ```
 
-The main idea of this task:
+The main idea of this task is this:
 
 1) We should  have some other grunt task and/or tool that produce the "tentative build files" (or "temporary build files"). 
 
@@ -54,7 +54,7 @@ These task doesn't have any options. Everything is configured in the `files` pro
 
 ```js
 grunt.initConfig({
-    'static-timestamp': {
+    'static_timestamp': {
         myApp: {
             files: [{
                 src: ['/path/to/build_files'], // can use globbing patterns

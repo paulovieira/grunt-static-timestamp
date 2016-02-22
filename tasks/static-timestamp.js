@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('static-timestamp', 'Add a timestamp to the static files, but only if files have actually changed', function() {
+    grunt.registerMultiTask('static_timestamp', 'Add a timestamp to the static files, but only if files have actually changed', function() {
 
         //console.log("this.files: ", JSON.stringify(this.files, null, 4));
 
@@ -40,6 +40,11 @@ module.exports = function(grunt) {
 
             if (!grunt.file.isDir(file.dest)) {
                 grunt.fail.fatal("Destination must be a directory: " + file.dest);
+            }
+
+            if(file.src.length===0){
+                grunt.log.warn("No source files found");
+                return;
             }
 
             // compute md5 hash for the src files
